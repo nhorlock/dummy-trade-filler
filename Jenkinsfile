@@ -10,7 +10,7 @@ pipeline {
     PATH = "${JAVA_HOME}/bin:${env.PATH}"
   }
   stages {
-    stage('Upgrade gradle version')
+    stage('Upgrade gradle version') {
       steps {
         sh 'chmod a+x ./gradlew'
         sh './gradlew wrapper --gradle-version 8.3'
