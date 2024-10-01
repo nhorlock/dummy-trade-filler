@@ -10,14 +10,15 @@ pipeline {
     PATH = "${JAVA_HOME}/bin:${env.PATH}"
   }
   stages {
-    stage('Check java version') {
+    stage('Check java and gradle version') {
       steps {
         sh 'java --version'
+        sh 'chmod a+x gradlew'
+        sh 'gradlew --version'
       }
     }
     stage('Test') {
       steps {
-        sh 'chmod a+x gradlew'
         sh './gradlew -Dorg.gradle.java.home=${JAVA_HOME} test'
       }
     }
