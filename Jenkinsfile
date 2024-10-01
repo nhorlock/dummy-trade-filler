@@ -13,8 +13,8 @@ pipeline {
     stage('Check java and gradle version') {
       steps {
         sh 'java --version'
-        sh 'chmod a+x gradlew'
-        sh 'gradlew --version'
+        sh 'chmod a+x ./gradlew'
+        sh './gradlew --version'
       }
     }
     stage('Test') {
