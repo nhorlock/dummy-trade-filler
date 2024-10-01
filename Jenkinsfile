@@ -18,13 +18,13 @@ pipeline {
     stage('Test') {
       steps {
         sh 'chmod a+x gradlew'
-        sh './gradlew test'
+        sh './gradlew -Dorg.gradle.java.home=${JAVA_HOME} test'
       }
     }
 
     stage('Build') {
       steps {
-        sh './gradlew build'
+        sh './gradlew -Dorg.gradle.java.home=${JAVA_HOME} build'
       }
     }
 
