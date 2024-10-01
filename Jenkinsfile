@@ -10,29 +10,27 @@ pipeline {
     PATH = "${JAVA_HOME}/bin:${env.PATH}"
   }
   stages {
-    stage('Upgrade gradle version') {
+    stage('set gradle executable') {
       steps {
         sh 'chmod a+x ./gradlew'
-        sh './gradlew wrapper --gradle-version 8.3'
       }
     }
         
     stage('Check java and gradle version') {
       steps {
         sh 'java --version'
-        sh 'chmod a+x ./gradlew'
         sh './gradlew --version'
       }
     }
     stage('Test') {
       steps {
-        sh './gradlew -Dorg.gradle.java.home=${JAVA_HOME} test'
+        sh './gradlew test'
       }
     }
 
     stage('Build') {
       steps {
-        sh './gradlew -Dorg.gradle.java.home=${JAVA_HOME} build'
+        sh './gradlew build'
       }
     }
 
